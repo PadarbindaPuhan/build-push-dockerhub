@@ -23,7 +23,4 @@ jobs:
           # get the current date and time with seconds
           current_date=$(date +"%Y%m%d%H%M%S")
           docker build -t ${{ secrets.DOCKER_USER }}/myapp:$current_date .
-
-      - name: show docker images
-        run: |
-          docker image ls
+          docker push ${{ secrets.DOCKER_USER }}/myapp:$current_date
