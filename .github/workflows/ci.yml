@@ -18,13 +18,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-     
-
-      
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/my-image:latest
+      - name: Build docker image 
+        run: |
+          # get the current date and time with seconds
+          current_date=$(date +"%Y%m%d%H%M%S")
+          docker build -t ${{ secrets.DOCKER_USER }}/myapp:$current_date .
